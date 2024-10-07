@@ -16,12 +16,14 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
-app.use(
-  cors({
-    origin: `${process.env.FRONTEND_URL}`,
-    credentials: true,
-  })
-);
+
+const corsOptions = {
+  origin: `${process.env.FRONTEND_URL}`,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.use(cors(corsOptions));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route Imports

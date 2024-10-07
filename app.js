@@ -23,6 +23,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
